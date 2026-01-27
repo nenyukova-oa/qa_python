@@ -3,7 +3,7 @@ from main import BooksCollector
 import pytest
 #1f
 @pytest.fixture (scope='function')
-def setup_collector_with_book(self):
+def setup_collector_with_book():
     collector = BooksCollector()
     book_name = 'Пять поросят'
     collector.add_new_book(book_name)
@@ -11,7 +11,7 @@ def setup_collector_with_book(self):
 
 #2f    
 @pytest.fixture(scope='function')
-def setup_collector_with_favorited_book(self):       
+def setup_collector_with_favorited_book():       
     collector = BooksCollector()
     book_name = 'Война и мир'    
     collector.add_new_book(book_name)
@@ -20,7 +20,7 @@ def setup_collector_with_favorited_book(self):
 
 #3f
 @pytest.fixture(scope='function')
-def setup_collector_with_three_favorites(self):       
+def setup_collector_with_three_favorites():       
     collector = BooksCollector()
     book_names = ['Обломов', 'Зеленая миля', 'Сияние']        
         
@@ -29,3 +29,4 @@ def setup_collector_with_three_favorites(self):
         collector.add_book_in_favorites(name)         
         
     return collector, book_names
+

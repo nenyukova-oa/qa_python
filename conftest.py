@@ -1,3 +1,5 @@
+from main import BooksCollector
+
 import pytest
 #1f
 @pytest.fixture (scope='function')
@@ -6,15 +8,6 @@ def setup_collector_with_book(self):
     book_name = 'Пять поросят'
     collector.add_new_book(book_name)
     return collector, book_name
-
-
-#1p
-@pytest.mark.parametrize("genre_name, expected_result",
-    [
-        ('Ужасы', []),        
-        ('Детективы', [])
-    ]
-)
 
 #2f    
 @pytest.fixture(scope='function')

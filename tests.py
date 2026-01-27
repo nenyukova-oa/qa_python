@@ -83,8 +83,3 @@ class TestBooksCollector:
         actual_favorites_list = collector.get_list_of_favorites_books()      
         assert len(actual_favorites_list) == 3
         assert actual_favorites_list == expected_books_list
-
-
-
-
-   

@@ -1,0 +1,37 @@
+import pytest
+
+@pytest.fixture (scope='function')
+def setup_collector_with_book(self):
+    collector = BooksCollector()
+    book_name = 'Пять поросят'
+    collector.add_new_book(book_name)
+    return collector, book_name
+
+
+
+@pytest.mark.parametrize("genre_name, expected_result",
+    [
+        ('Ужасы', []),        
+        ('Детективы', [])
+    ]
+
+    
+@pytest.fixture(scope='function')
+def setup_collector_with_favorited_book(self):       
+    collector = BooksCollector()
+    book_name = 'Война и мир'    
+    collector.add_new_book(book_name)
+    collector.add_book_in_favorites(book_name)     
+    return collector, book_name
+
+
+@pytest.fixture(scope='function')
+    def setup_collector_with_three_favorites(self):       
+        collector = BooksCollector()
+        book_names = ['Обломов', 'Зеленая миля', 'Сияние']        
+        
+        for name in book_names:
+            collector.add_new_book(name)
+            collector.add_book_in_favorites(name)         
+        
+        return collector, book_names

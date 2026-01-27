@@ -1,5 +1,5 @@
 import pytest
-
+#1f
 @pytest.fixture (scope='function')
 def setup_collector_with_book(self):
     collector = BooksCollector()
@@ -8,14 +8,15 @@ def setup_collector_with_book(self):
     return collector, book_name
 
 
-
+#1p
 @pytest.mark.parametrize("genre_name, expected_result",
     [
         ('Ужасы', []),        
         ('Детективы', [])
     ]
+)
 
-    
+#2f    
 @pytest.fixture(scope='function')
 def setup_collector_with_favorited_book(self):       
     collector = BooksCollector()
@@ -24,14 +25,14 @@ def setup_collector_with_favorited_book(self):
     collector.add_book_in_favorites(book_name)     
     return collector, book_name
 
-
+#3f
 @pytest.fixture(scope='function')
-    def setup_collector_with_three_favorites(self):       
-        collector = BooksCollector()
-        book_names = ['Обломов', 'Зеленая миля', 'Сияние']        
+def setup_collector_with_three_favorites(self):       
+    collector = BooksCollector()
+    book_names = ['Обломов', 'Зеленая миля', 'Сияние']        
         
-        for name in book_names:
-            collector.add_new_book(name)
-            collector.add_book_in_favorites(name)         
+    for name in book_names:
+        collector.add_new_book(name)
+        collector.add_book_in_favorites(name)         
         
-        return collector, book_names
+    return collector, book_names

@@ -1,4 +1,5 @@
 from main import BooksCollector
+import pytest
 
 class TestBooksCollector:
 #1
@@ -6,7 +7,7 @@ class TestBooksCollector:
         collector = BooksCollector()        
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')        
-        assert len(collector.get_books_rating()) == 2
+        assert len(collector.get_books_genre()) == 2
     
 #2  
     def test_set_book_genre_valid_book_and_genre(self, setup_collector_with_book):
@@ -39,6 +40,13 @@ class TestBooksCollector:
         assert result == {book_name: genre_name}
 
 #6
+
+    @pytest.mark.parametrize("genre_name, expected_result",
+    [
+        ('Ужасы', []),        
+        ('Детективы', [])
+    ]
+    )
     def test_books_with_age_rating_not_in_children_list(self, setup_collector_with_book, genre_name, expected_result):
         collector, book_name = setup_collector_with_book    
         collector.set_book_genre(book_name, genre_name)    
